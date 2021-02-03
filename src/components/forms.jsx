@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({setInputText,inputText, Items, setItems}) => {
+const Form = ({setInputText,inputText, Items, setItems, setStatus}) => {
 
     const inputTextHandler = (e) => {
         console.log(e.target.value);
@@ -10,9 +10,13 @@ const Form = ({setInputText,inputText, Items, setItems}) => {
     const submitHandler = (e) =>{
         e.preventDefault();
         setItems([
-            ...Items, {text: inputText, complete: false, id: Math.random() * 1000}
+            ...Items, {text: inputText, completed: false, id: Math.random() * 1000}
         ])
+        setInputText("");
+    }
 
+    const statusHandler = (e) => {
+        setStatus(e.target.value);
     }
 
 	return (
@@ -24,7 +28,7 @@ const Form = ({setInputText,inputText, Items, setItems}) => {
         <i class="fas fa-plus-square"></i>
       </button>
       <div class="select">
-        <select name="todos" class="filter-todo">
+        <select onChange={statusHandler} name="todos" class="filter-todo">
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>
