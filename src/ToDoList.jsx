@@ -1,10 +1,15 @@
 import React from "react";
 
-const ToDoList = (props) => {
 
-    const checkItmes = (id) => {
-        console.log("chcek");
-        
+const ToDoList = (props) => {
+	const checkItmes = (id) => {
+		console.log("chcek");
+
+		const styles = {
+			color: 'black',
+		};
+
+		<li style={styles}> {props.text} </li>;
 	};
 
 	return (

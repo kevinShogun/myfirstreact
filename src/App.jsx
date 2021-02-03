@@ -30,7 +30,7 @@ const App = () => {
 
 	return (
 		<>
-			<div className="Maindiv">
+			<div className="overlay">
 				<div className="App">
 					<div className="line">
 					<i class="fas fa-clipboard-list"></i>  <h1>To Do List</h1>
