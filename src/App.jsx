@@ -33,7 +33,7 @@ const App = () => {
 			<div className="Maindiv">
 				<div className="App">
 					<div className="line">
-						<h1>To Do List</h1>
+					<i class="fas fa-clipboard-list"></i>  <h1>To Do List</h1>
 					</div>
 				</div>
 

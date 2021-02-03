@@ -62,8 +62,8 @@ ol li {
 
 .todo_style .fa-times {
   cursor: pointer;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	display: flex;
 	align-items: center;
 	background-color: #a869c5;
@@ -86,7 +86,7 @@ ol li {
   margin: 15px;
 }
 .form input{
-  width: 290px;
+  width: 390px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -116,7 +116,18 @@ ol li {
   box-shadow: 5px 5px 15px rgba(114, 111, 111, 0.6);
 }
 
-@media screen and (max-width: 1483px){
+.check{
+  font-size: 50px;
+}
+
+.fa-clipboard-list{
+  color: #eeeeee;
+  font-size: 40px;
+  margin: 5px;
+}
+
+
+/* @media screen and (max-width: 1483px){
   .form input, button{
       left: 580px;
   }
@@ -130,7 +141,7 @@ ol li {
 
 @media screen and (max-width: 1200px){
   .form input, button{
-      left: 300px;
+      left: 900px;
   }
 }
 
@@ -166,4 +177,4 @@ ol li {
   }
 }
 
-
+ */
