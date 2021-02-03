@@ -1,65 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import ToDoList from "./ToDoList";
+import Form from "./components/forms";
+import TodoList from "./components/TodoList";
 
 const App = () => {
-	const [inputList, setInputList] = useState("");
+	const [inputText, setInputText] = useState("");
 	const [Items, setItems] = useState([]);
+	const [status, setStatus] = useState("all");
+	const [filterTodos, setFilterTodos] = useState([]);
 
-	const itemEvent = (event) => {
-		setInputList(event.target.value);
+	useEffect(() => {
+		getLocalTodos();
+	},[]);
+
+	useEffect(() => {
+		filterHandler();
+		saveLocalTodos();
+	}, [Items, status]);
+
+	const filterHandler = () => {
+		switch (status) {
+			case "completed":
+				setFilterTodos(Items.filter((item) => item.completed === true));
+				break;
+
+			case "uncompleted":
+				setFilterTodos(Items.filter((item) => item.completed === false));
+				break;
+
+			default:
+				setFilterTodos(Items);
+				break;
+		}
 	};
 
-	const listOfItems = () => {
-		setItems((olditems) => {
-			return [...olditems, inputList];
-		});
-		setInputList("");
-    };
-    
-    const deleteItems = (id) => {
-        console.log("DElete");
-        setItems((olditems) => {
-			return olditems.filter((arrElem, index)=>{
-                return index !== id;
-            })
-		});
+	const saveLocalTodos = () => {
+		
+			localStorage.setItem('Items', JSON.stringify(Items));
+		
 	};
-	
-	
+
+	const getLocalTodos = () => {
+		if(localStorage.getItem('Items')===null){
+			localStorage.setItem('Items', JSON.stringify);
+		}else{
+			let todoLocal = JSON.parse(localStorage.getItem('Items'));
+			setItems(todoLocal);
+		}
+	};
 
 	return (
 		<>
-			<div className="overlay">
+			<div className="container">
 				<div className="App">
-					<div className="line">
-					<i class="fas fa-clipboard-list"></i>  <h1>To Do List</h1>
-					</div>
-				</div>
-
-				<div className="form">
-					<input
-						type="text"
-						name="title"
-						placeholder="Agregar tarea.."
-						value={inputList}
-						onChange={itemEvent}
+					<header>
+						<i class="fas fa-clipboard-list"></i> <h1>To Do List</h1>
+					</header>
+					<Form
+						inputText={inputText}
+						Items={Items}
+						setItems={setItems}
+						setStatus={setStatus}
+						setInputText={setInputText}
 					/>
-					<button onClick={listOfItems}>+</button>
-				</div>
-				<div className="list">
-					<ol>
-						{/* <li>{inputList}</li> */}
-
-						{Items.map((itemval, index) => {
-							return <ToDoList
-                            key={index}
-                            id={index}
-                             text={itemval} 
-                                 onSelect={deleteItems}
-                             />;
-						})}
-					</ol>
+					<TodoList
+						filterTodos={filterTodos}
+						Items={Items}
+						setItems={setItems}
+					/>
 				</div>
 			</div>
 		</>

@@ -1,200 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-:root {
-	--backColor: #eeeeee;
-	--fontColor: #8f66c5;
-}
-
-.overlay{
-	position: absolute;
-  width: 100%;
-  height: 100%; 
-  top: 0;
-  left: 0;
-  background-color: rgba(29, 28, 29, 0.692);
-}
-
-
-.line {
+.container {
 	position: absolute;
 	width: 100%;
-	height: auto;
-	background-color: var(--fontColor);
-	top: 10px;
-	box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.6);
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
-.App {
-  text-align: center;
- 
-}
-
-.App h1 {
-	font-family: "Ubuntu", sans-serif;
-	font-weight: 800;
-	color: var(--backColor);
-}
-
-ol {
-	position: relative;
-	margin-top: 30px;
-  top: 100px;
-  
-}
-
-ol li {
-  cursor: pointer;
-	padding-left: 0px;
-	font-size: 28px;
-	min-height: 40px;
-  display: flex;
-  font-weight: 600;
-	align-items: center;
+body {
+	background-image: url("img/pexels-pixabay-162583.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	color: #eeeeee;
-  text-transform: capitalize;
-  transition: all 0.3s ease;
+	font-family: "Poppins", sans-serif;
+	min-height: 100vh;
 }
 
-.check{
-  color: black;
-  font-size: 50px;
+header {
+	font-size: 2rem;
 }
 
-.todo_style {
+header,
+form {
+	min-height: 20vh;
 	display: flex;
-	flex-direction: row;
-	justify-content: left;
-	align-items: center;
-}
-
-.todo_style .fa-times {
-  cursor: pointer;
-	width: 30px;
-	height: 30px;
-	display: flex;
-	align-items: center;
-	background-color: #a869c5;
 	justify-content: center;
-	border-radius: 50%;
-	margin: 5px 20px 0 35px;
-	color: aliceblue;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
+	align-items: center;
 }
-.todo_style .fa-times:hover{
-  transition: all 0.3s ease;
-  background-color: crimson;
+form input,
+form button {
+	padding: 0.5rem;
+	font-size: 2rem;
+	border: none;
+	background: #eeeeee;
+	outline: none;
+	border-radius: 8px;
+	margin: 0.5rem;
 }
-
-.form input, button{
-  position: relative;
-  top: 100px;
-  left: 80px;
-  margin-top: 45px;
-  margin-left: 15px;
+form button {
+	color: #9a6650;
+	background: #f7fffe;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	outline: none;
 }
-
-.form input::placeholder{
-  color: #eeeeee75;
-}
-
-.form input{
-  color: #eeeeee;
-  width: 390px;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 5px solid #b74ee7c4;
-  border-radius: 5px;
-  font-size: 25px;
-  font-weight: 700;
-}
-
-.form button{
-  width: 60px;
-  height: 60px;
-  font-size: 35px;
-  font-weight: 900;
-  border-radius: 50%;
-  background-color: #a869c5;
-  border: none;
-  color: #eeeeee;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.5s ease;
-}
-
-.form button:hover{
-  background-color:  transparent;
-  border: 2px solid #eeeeee;
-  color: #a869c5;
-  
-  transition: all 0.5s ease;
-}
-
-.check{
-  font-size: 50px;
-}
-
-.fa-clipboard-list{
-  color: #eeeeee;
-  font-size: 40px;
-  margin: 5px;
+form button:hover {
+	background: #9a6650;
+	color: #eeeeee;
 }
 
 
-/* @media screen and (max-width: 1483px){
-  .form input, button{
-      left: 580px;
+.todo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.todo-list {
+	min-width: 30%;
+	list-style: none;
+}
+
+.todo {
+	margin: 0.5rem;
+	background: #eeeeee;
+	font-size: 20px;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  transition: all 1s ease;
+}
+.filter-todo {
+	padding: 1rem;
+}
+.todo li {
+	flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+	background: #705646;
+	color: #eeeeee;
+	border: none;
+	padding: 1rem;
+	cursor: pointer;
+	font-size: 15px;
+	outline: none;
+	border-radius: 0px;
+}
+.complete-btn {
+	background: #6c6d6a;
+	border-radius: 0px;
+}
+.todo-item {
+	padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+	pointer-events: none;
+}
+
+.fall {
+	transform: translateY(10rem) rotateZ(20deg);
+	opacity: 0;
+}
+
+.completed {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
+/*CUSTOM SELECTOR */
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background-image: none;
+	border-radius: 10px;
+}
+
+select option{
+  border-radius: 10px;
+}
+
+/* Custom Select */
+.select {
+	margin: 1rem;
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+}
+select {
+	color: #8c624c;
+	font-family: "Poppins", sans-serif;
+	cursor: pointer;
+	width: 12rem;
+  border-radius: 10px;
+  font-size: 18px;
+}
+/* Arrow */
+.select::after {
+	content: "\25BC";
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1.1rem;
+	background: #8c624c;
+	cursor: pointer;
+	pointer-events: none;
+}
+/* Transition */
+
+.select:hover::after {
+	transform: scale(1.5);
+	transition: all 0.4s ease;
+}
+
+@media screen and (max-width: 736px) {
+	header {
+		font-size: 24px;
+	}
+
+	form input,
+	form button {
+		font-size: 18px;
+	}
+
+	select {
+		width: 9.2rem;
   }
+  .select::after {
+		padding: 0.8rem;
+	}
+	.filter-todo {
+		padding: 0.8rem;
+	}
 }
 
-@media screen and (max-width: 1214px){
-  .form input, button{
-      left: 400px;
-  }
+@media screen and (max-width: 478px) {
+	header {
+		font-size: 20px;
+	}
+
+	form input,
+	form button {
+		font-size: 12px;
+	}
+
+	select {
+		font-size: 15px;
+		width: 8rem;
+		height: 2rem;
+	}
+	.select {
+		margin: 0.2rem;
+		border-radius: 10px;
+	}
+
+	.select::after {
+		padding: 0.5rem;
+	}
+	.filter-todo {
+		padding: 0.5rem;
+	}
 }
 
-@media screen and (max-width: 1200px){
-  .form input, button{
-      left: 900px;
-  }
+@media screen and (max-width: 394px) {
+	select {
+		font-size: 10px;
+		width: 8rem;
+		height: 2rem;
+	}
+	.filter-todo {
+		padding: 0.5rem;
+	}
 }
-
-@media screen and (max-width: 1024px){
-  .form input, button{
-      left: 350px;
-  }
-}
-
-@media screen and (max-width: 768px){
-  .form input, button{
-      left: 200px;
-  }
-}
-
-
-@media screen and (max-width: 425px){
-  .form input, button{
-      left: 10px;
-  }
-}
-
-@media screen and (max-width: 375px){
-  .form input, button{
-      left: 20px;
-      font-size: 20px;
-      width: 200px;
-  }
-  .form button{
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-  }
-}
-
- */
