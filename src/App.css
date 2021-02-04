@@ -188,7 +188,7 @@ select {
 
 	form input,
 	form button {
-		font-size: 18px;
+		font-size: 15px;
 	}
 
 	select {
@@ -198,7 +198,7 @@ select {
 		padding: 0.8rem;
 	}
 	.filter-todo {
-		padding: 0.8rem;
+		padding: 0.5rem;
 	}
 }
 
@@ -213,7 +213,7 @@ select {
 	}
 
 	select {
-		font-size: 15px;
+		font-size: 10px;
 		width: 8rem;
 		height: 2rem;
 	}
@@ -239,4 +239,10 @@ select {
 	.filter-todo {
 		padding: 0.5rem;
 	}
+	form {
+		min-height: 20vh;
+		display: flex;
+		flex-direction: row;
+	}
+	
 }
