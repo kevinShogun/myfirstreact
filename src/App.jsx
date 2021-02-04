@@ -1,23 +1,19 @@
-import React, { useState } from "react";
+import React , { useState } from "react";
 import "./App.css";
-import ToDoList from "./ToDoList";
+import Form from "./components/forms";
+import TodoList from "./components/TodoList";
+
+/* import ToDoList from "./ToDoList"; */
 
 const App = () => {
-	const [inputList, setInputList] = useState("");
-	const [Items, setItems] = useState([]);
+	
+	const [inputText, setInputText] = useState("");
+	 const [Items, setItems] = useState([]);
 
-	const itemEvent = (event) => {
+	/*const itemEvent = (event) => {
 		setInputList(event.target.value);
-	};
-
-	const listOfItems = () => {
-		setItems((olditems) => {
-			return [...olditems, inputList];
-		});
-		setInputList("");
-    };
-    
-    const deleteItems = (id) => {
+	}; 
+	const deleteItems = (id) => {
         console.log("DElete");
         setItems((olditems) => {
 			return olditems.filter((arrElem, index)=>{
@@ -25,43 +21,20 @@ const App = () => {
             })
 		});
 	};
-	
-	
+	 */
 
 	return (
 		<>
-			<div className="overlay">
+			
 				<div className="App">
-					<div className="line">
+					<header>
 					<i class="fas fa-clipboard-list"></i>  <h1>To Do List</h1>
-					</div>
+					</header>
+					<Form inputText={inputText} Items={Items} setItems={setItems} setInputText={setInputText}/>
+					<TodoList Items={Items} setItems={setItems}/>
 				</div>
-
-				<div className="form">
-					<input
-						type="text"
-						name="title"
-						placeholder="Agregar tarea.."
-						value={inputList}
-						onChange={itemEvent}
-					/>
-					<button onClick={listOfItems}>+</button>
-				</div>
-				<div className="list">
-					<ol>
-						{/* <li>{inputList}</li> */}
-
-						{Items.map((itemval, index) => {
-							return <ToDoList
-                            key={index}
-                            id={index}
-                             text={itemval} 
-                                 onSelect={deleteItems}
-                             />;
-						})}
-					</ol>
-				</div>
-			</div>
+				
+				
 		</>
 	);
 };

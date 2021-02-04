@@ -1,200 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+header {
+  font-size: 2rem;
 }
 
-:root {
-	--backColor: #eeeeee;
-	--fontColor: #8f66c5;
-}
-
-.overlay{
-	position: absolute;
-  width: 100%;
-  height: 100%; 
-  top: 0;
-  left: 0;
-  background-color: rgba(29, 28, 29, 0.692);
-}
-
-
-.line {
-	position: absolute;
-	width: 100%;
-	height: auto;
-	background-color: var(--fontColor);
-	top: 10px;
-	box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.6);
-}
-
-.App {
-  text-align: center;
- 
-}
-
-.App h1 {
-	font-family: "Ubuntu", sans-serif;
-	font-weight: 800;
-	color: var(--backColor);
-}
-
-ol {
-	position: relative;
-	margin-top: 30px;
-  top: 100px;
-  
-}
-
-ol li {
-  cursor: pointer;
-	padding-left: 0px;
-	font-size: 28px;
-	min-height: 40px;
+header,
+form {
+  min-height: 20vh;
   display: flex;
-  font-weight: 600;
-	align-items: center;
-	color: #eeeeee;
-  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+}
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
+}
+form button {
+  color: #ff6f47;
+  background: #f7fffe;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
+form button:hover {
+  background: #ff6f47;
+  color: white;
+}
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.check{
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: white;
+  font-size: 20px;
   color: black;
-  font-size: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 1s ease;
+}
+.filter-todo {
+  padding: 1rem;
+}
+.todo li {
+  flex: 1;
 }
 
-.todo_style {
-	display: flex;
-	flex-direction: row;
-	justify-content: left;
-	align-items: center;
-}
-
-.todo_style .fa-times {
+.trash-btn,
+.complete-btn {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  padding: 1rem;
   cursor: pointer;
-	width: 30px;
-	height: 30px;
-	display: flex;
-	align-items: center;
-	background-color: #a869c5;
-	justify-content: center;
-	border-radius: 50%;
-	margin: 5px 20px 0 35px;
-	color: aliceblue;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
+  font-size: 15px;
 }
-.todo_style .fa-times:hover{
-  transition: all 0.3s ease;
-  background-color: crimson;
+.complete-btn {
+  background: rgb(11, 212, 162);
+}
+.todo-item {
+  padding: 0rem 0.5rem;
 }
 
-.form input, button{
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.fall {
+  transform: translateY(10rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/*CUSTOM SELECTOR */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background-image: none;
+}
+
+/* Custom Select */
+.select {
+  margin: 1rem;
   position: relative;
-  top: 100px;
-  left: 80px;
-  margin-top: 45px;
-  margin-left: 15px;
+  overflow: hidden;
 }
-
-.form input::placeholder{
-  color: #eeeeee75;
-}
-
-.form input{
-  color: #eeeeee;
-  width: 390px;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 5px solid #b74ee7c4;
-  border-radius: 5px;
-  font-size: 25px;
-  font-weight: 700;
-}
-
-.form button{
-  width: 60px;
-  height: 60px;
-  font-size: 35px;
-  font-weight: 900;
-  border-radius: 50%;
-  background-color: #a869c5;
-  border: none;
-  color: #eeeeee;
+select {
+  color: #ff6f47;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
-  outline: none;
-  transition: all 0.5s ease;
+  width: 12rem;
 }
-
-.form button:hover{
-  background-color:  transparent;
-  border: 2px solid #eeeeee;
-  color: #a869c5;
-  
-  transition: all 0.5s ease;
+/* Arrow */
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background: #ff6f47;
+  cursor: pointer;
+  pointer-events: none;
 }
-
-.check{
-  font-size: 50px;
+/* Transition */
+/*
+.select:hover::after {
+  transform: scale(1.5);
 }
+*/
 
-.fa-clipboard-list{
-  color: #eeeeee;
-  font-size: 40px;
-  margin: 5px;
-}
-
-
-/* @media screen and (max-width: 1483px){
-  .form input, button{
-      left: 580px;
-  }
-}
-
-@media screen and (max-width: 1214px){
-  .form input, button{
-      left: 400px;
-  }
-}
-
-@media screen and (max-width: 1200px){
-  .form input, button{
-      left: 900px;
-  }
-}
-
-@media screen and (max-width: 1024px){
-  .form input, button{
-      left: 350px;
-  }
-}
-
-@media screen and (max-width: 768px){
-  .form input, button{
-      left: 200px;
-  }
-}
-
-
-@media screen and (max-width: 425px){
-  .form input, button{
-      left: 10px;
-  }
-}
-
-@media screen and (max-width: 375px){
-  .form input, button{
-      left: 20px;
-      font-size: 20px;
-      width: 200px;
-  }
-  .form button{
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-  }
-}
-
- */
