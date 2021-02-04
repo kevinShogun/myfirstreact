@@ -12,6 +12,7 @@
 	left: 0;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.5);
+	overflow: hidden;
 }
 
 body {
@@ -42,8 +43,7 @@ form button {
 	border: none;
 	background: #eeeeee;
 	outline: none;
-	border-radius: 8px;
-	margin: 0.5rem;
+	margin: 0rem;
 }
 form button {
 	color: #9a6650;
@@ -97,6 +97,17 @@ form button:hover {
 	outline: none;
 	border-radius: 0px;
 }
+
+.trash-btn:hover .fa-trash-alt{
+		transform: scale(1.5);
+	transition: all 0.4s ease;
+}
+
+.complete-btn:hover .fa-check-circle{
+	transform: scale(1.5);
+	transition: all 0.4s ease;
+
+} 
 .complete-btn {
 	background: #6c6d6a;
 	border-radius: 0px;
@@ -105,8 +116,8 @@ form button:hover {
 	padding: 0rem 0.5rem;
 }
 
-.fa-trash,
-.fa-check {
+.fa-trash-alt,
+.fa-check-circle {
 	pointer-events: none;
 }
 
